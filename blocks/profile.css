@@ -6,8 +6,10 @@
 
 .profile__avatar {
   margin-right: 20px;
-  height: 190px;
-  width: 190px;
+  /*height: 190px; FIX AAA
+  width: 190px;*/
+  border-radius: 8px; /* FIX 1 */
+  object-fit: cover; /* FIX 2 */
 }
 
 .profile__column {
@@ -20,6 +22,14 @@
   font-size: 32px;
   font-weight: 500;
   line-height: 1;
+  text-overflow: ellipsis;
+  /* FIX 3 */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 250px; /* FIX !!!!!OJO!!!!! */
+  /* FIX 3 */
 }
 
 .profile__description {
@@ -27,6 +37,13 @@
   font-size: 16px;
   font-weight: 500;
   opacity: 0.7;
+  /* FIX 4 */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 250px; /* FIX !!!!!OJO!!!!! */
+  /* FIX 4 */
 }
 
 .profile__edit-btn {
@@ -38,12 +55,19 @@
   gap: 8px;
   opacity: 0.7;
   line-height: 1;
+  color: #212121; /* FIX 5 */
+  font-weight: 500; /* FIX 6 */
+  display: flex; /* FIX 7 */
+}
+
+.profile__edit-btn:hover {
+  cursor: pointer;
 }
 
 .edit-btn__image {
-  margin-right: 8px;
-  height: 12px;
-  width: 12px;
+  /* margin-right: 8px; */ /* FIX 8 */
+  height: 16px; /* FIX 9 */
+  width: 16px; /* FIX 10 */
 }
 
 .profile__add-btn {
@@ -55,6 +79,10 @@
   border-radius: 8px;
   background: #212121;
   color: #fcf5e5;
+}
+
+.profile__add-btn:hover {
+  cursor: pointer;
 }
 
 .add-btn__image {
