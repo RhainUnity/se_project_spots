@@ -9,7 +9,7 @@
 
 **Intro**
 
-This project makes use of CSS and HTML coding languages with emphasis on media queries to enhance scalability from typical desktop to standard cel mobile devices. The layout of this project adheres to design specifications provided by a Figma brief provided by Triple Ten.
+This project makes use of CSS and HTML coding languages with emphasis on media queries to enhance scalability from typical desktop to standard cel mobile devices. The layout of this project adheres to design specifications in a Figma brief provided by Triple Ten.
 
 **Figma**
 
