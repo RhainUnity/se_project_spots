@@ -17,9 +17,12 @@ This project makes use of CSS and HTML coding languages with emphasis on media q
 
 **Images**
 
-```![Bessie Coleman](./images/avatar.png)
+![Bessie Coleman](./images/avatar.png)
 
 **Future Plans**
 
 Soon, the buttons will have functionality utilizing javascript on the backend.
+
+```
+
 ```
