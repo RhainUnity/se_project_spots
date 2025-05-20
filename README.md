@@ -5,6 +5,7 @@
 - Intro
 - Figma
 - Link To My Project
+- Link To My Video Explanation
 - Images
 - Future Plans
 
@@ -19,6 +20,10 @@ This project makes use of CSS and HTML coding languages with emphasis on media q
 **Link to My Project on GitHub Pages**
 
 - [Link to the project on GitHub Pages](https://rhainunity.github.io/se_project_spots/)
+
+**Link to My Video Explanation**
+
+- [Link to My Video Explanation](https://)
 
 **Images**
 
