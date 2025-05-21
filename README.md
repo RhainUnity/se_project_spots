@@ -23,7 +23,7 @@ This project makes use of CSS and HTML coding languages with emphasis on media q
 
 **Link to My Video Explanation**
 
-- [Link to My Video Explanation](https://)
+- [Link to My Video Explanation](https://drive.google.com/file/d/1TWvIv6x35F2N3VB3lj2KQJ6ZV5LaocIk/view?usp=sharing)
 
 **Images**
 
