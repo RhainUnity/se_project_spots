@@ -124,7 +124,6 @@
         <p class="footer__copyright">2023 &copy; Spots</p>
       </footer>
       <div class="modal" id="edit-profile-modal">
-        <div class="modal__bg-overlay"></div>
         <div class="modal__container">
           <h2 class="modal__title">Edit profile</h2>
           <button type="button" class="modal__close-btn"></button>
@@ -136,6 +135,7 @@
                 type="text"
                 class="modal__input"
                 placeholder="Type your name"
+                required
               />
             </label>
             <label for="profile-dscrptn-input" class="modal__label"
@@ -145,6 +145,7 @@
                 type="text"
                 class="modal__input"
                 placeholder="Describe yourself"
+                required
               />
             </label>
             <button
@@ -170,6 +171,7 @@
                 type="url"
                 class="modal__input"
                 placeholder="Paste a link to the picture"
+                required
               />
             </label>
             <label for="card-caption-input" class="modal__label"
@@ -179,6 +181,7 @@
                 type="text"
                 class="modal__input"
                 placeholder="Type your caption"
+                required
               />
             </label>
             <button

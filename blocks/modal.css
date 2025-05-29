@@ -26,6 +26,7 @@
   border-radius: 8px;
   background-color: #ffffff;
   padding: 32px 50px;
+  box-sizing: border-box;
   position: relative;
   color: #212121;
 }
@@ -39,14 +40,13 @@
 
 .modal__close-btn {
   position: absolute;
-  opacity: 0.7;
   top: 32px;
   right: 50px;
   height: 40px;
   width: 40px;
   background: none;
   border: none;
-  background-image: url(../images/close-btn-icon.png);
+  background-image: url(../images/close-button-icon.svg);
   opacity: 0.4;
 }
 
@@ -63,7 +63,7 @@
 .modal__label {
   line-height: 18px;
   margin: 0 0 32px;
-  opacity: 0.7;
+  color: rgba(33, 33, 33, 0.7);
   font-weight: 500;
 }
 
@@ -97,7 +97,10 @@
   border-radius: 8px;
   background-color: #212121;
   color: #fcf5e5;
+  font-size: 16px;
+  line-height: 100%;
   font-weight: 500;
+  border: 0;
 }
 
 .modal__submit-btn:hover {
