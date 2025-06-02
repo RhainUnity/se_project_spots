@@ -16,7 +16,6 @@ const initialCards = [
     name: "Sardar Kamran Khan",
     link: "./images/sardar-kamran-khan-zo_udYMcaVc-unsplash.jpg",
   },
-
   {
     name: "Thomas Langnes",
     link: "./images/thomas-langnes-895EJdXXtjE-unsplash.jpg",
