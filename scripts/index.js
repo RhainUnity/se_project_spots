@@ -1,31 +1,3 @@
-//CARDS ARRAY
-const initialCards = [
-  {
-    name: "Alvin Lenin",
-    link: "./images/alvin-lenin-2ta8OjluZuI-unsplash.jpg",
-  },
-  {
-    name: "Andres Silva",
-    link: "./images/andres-silva--BcDO3m3oJI-unsplash.jpg",
-  },
-  {
-    name: "Mick Haupt",
-    link: "./images/mick-haupt-NXHz9hqghVo-unsplash.jpg",
-  },
-  {
-    name: "Sardar Kamran Khan",
-    link: "./images/sardar-kamran-khan-zo_udYMcaVc-unsplash.jpg",
-  },
-  {
-    name: "Thomas Langnes",
-    link: "./images/thomas-langnes-895EJdXXtjE-unsplash.jpg",
-  },
-  {
-    name: "Sunira Moses",
-    link: "./images/sunira-moses-SrL6eAJlaEM-unsplash.jpg",
-  },
-];
-
 //CARD TEMPLATE
 const cardList = document.querySelector(".cards__list");
 const cardTemplate = document.querySelector("#card-template");
@@ -41,7 +13,7 @@ const profileName = profileColumn.querySelector(".profile__name");
 const profileDescription = profileColumn.querySelector(".profile__description");
 const nameInput = editProfileModal.querySelector("#profile-name-input");
 const jobInput = editProfileModal.querySelector("#profile-dscrptn-input");
-const profileSubmitForm = document.querySelector("#edit-profile-form");
+const profileSubmitForm = document.forms("edit-profile-form");
 
 //NEW POST
 const addPostModal = document.querySelector("#new-post-modal");
@@ -51,7 +23,7 @@ const addPostCloseBtn = addPostModal.querySelector(".modal__close-btn");
 /* input */
 const cardImageInput = document.querySelector("#card-image-input");
 const cardCaptionInput = document.querySelector("#card-caption-input");
-const addPostSubmitForm = document.querySelector("#new-post-form");
+const addPostSubmitForm = document.forms("new-post-form");
 
 //PREVIEW MODAL
 const previewModal = document.querySelector("#preview-modal");
@@ -96,6 +68,11 @@ addPostSubmitForm.addEventListener("submit", function (evt) {
   const card = { name: cardCaptionInput.value, link: cardImageInput.value };
   const newCard = getCardElement(card);
   cardList.prepend(newCard);
+
+  //clear input fields
+  cardCaptionInput.value = "";
+  cardImageInput.value = "";
+
   closeModal(addPostModal);
 });
 
