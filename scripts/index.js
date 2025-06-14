@@ -13,7 +13,7 @@ const profileName = profileColumn.querySelector(".profile__name");
 const profileDescription = profileColumn.querySelector(".profile__description");
 const nameInput = editProfileModal.querySelector("#profile-name-input");
 const jobInput = editProfileModal.querySelector("#profile-dscrptn-input");
-const profileSubmitForm = document.forms("edit-profile-form");
+const profileSubmitForm = document.forms["edit-profile-form"];
 
 //NEW POST
 const addPostModal = document.querySelector("#new-post-modal");
@@ -23,7 +23,7 @@ const addPostCloseBtn = addPostModal.querySelector(".modal__close-btn");
 /* input */
 const cardImageInput = document.querySelector("#card-image-input");
 const cardCaptionInput = document.querySelector("#card-caption-input");
-const addPostSubmitForm = document.forms("new-post-form");
+const addPostSubmitForm = document.forms["new-post-form"];
 
 //PREVIEW MODAL
 const previewModal = document.querySelector("#preview-modal");
