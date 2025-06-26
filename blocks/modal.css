@@ -88,18 +88,40 @@
   font-size: 20px;
   line-height: 20px;
   color: rgba(33, 33, 33, 1);
-  border-color: rgba(33, 33, 33, 0.4);
   border-width: 1px;
   font-weight: 500;
   box-sizing: border-box;
+}
+
+.modal__input:valid {
+  border-color: rgba(33, 33, 33, 0.4);
+}
+
+.modal__input:valid:focus {
+  border-color: rgba(33, 33, 33, 0.4);
+  outline: none;
+}
+
+.modal__input:invalid:focus {
+  border-color: rgba(255, 0, 0, 0.6);
+  outline: none;
+}
+
+.modal__input:invalid {
+  border-color: rgba(255, 0, 0, 0.6);
 }
 
 .modal__input::placeholder {
   color: rgba(33, 33, 33, 0.3);
 }
 
-.modal__input:hover {
+.modal__input:valid:hover {
   border-color: rgba(33, 33, 33, 1);
+  cursor: pointer;
+}
+
+.modal__input:invalid:hover {
+  border-color: rgba(255, 0, 0, 0.6);
   cursor: pointer;
 }
 

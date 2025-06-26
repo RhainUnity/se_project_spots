@@ -1,0 +1,24 @@
+.form__input-error {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 0, 0, 0.7);
+  opacity: 0;
+  display: block;
+  margin-top: 8px;
+  left: 0;
+  transition: 0.3s;
+}
+
+.form__input-error_active {
+  opacity: 1;
+}
+
+.button_inactive {
+  color: rgba(33, 33, 33, 0.5);
+  background: #ededed;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

@@ -40,6 +40,7 @@ previewCloseBtn.addEventListener("click", function () {
 editProfileBtn.addEventListener("click", function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
+  resetValidation(profileSubmitForm, validationSettings);
   openModal(editProfileModal);
 });
 
@@ -56,6 +57,7 @@ profileSubmitForm.addEventListener("submit", function (evt) {
 
 //NEW POST OPEN/CLOSE
 addPostBtn.addEventListener("click", function () {
+  resetValidation(addPostSubmitForm, validationSettings);
   openModal(addPostModal);
 });
 
@@ -78,10 +80,13 @@ addPostSubmitForm.addEventListener("submit", function (evt) {
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  enableValidation(validationSettings);
+  document.addEventListener("keydown", escapeCloseModal);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", escapeCloseModal);
 }
 
 //CARD FUNCTION
@@ -120,3 +125,37 @@ initialCards.forEach(function (card) {
   const initialCard = getCardElement(card);
   cardList.prepend(initialCard);
 });
+
+//CLOSE MODAL ON ESCAPE OR CLICK BG
+function escapeCloseModal(evt) {
+  if (evt.key === "Escape") {
+    closeOpenedModal();
+  }
+}
+
+document.addEventListener("mousedown", (evt) => {
+  const modals = document.querySelectorAll(".modal");
+  modals.forEach((modal) => {
+    if (evt.target === modal) {
+      closeOpenedModal();
+    }
+  });
+});
+
+function closeOpenedModal() {
+  const openedModal = document.querySelector(".modal_is-opened");
+  if (openedModal) {
+    closeModal(openedModal);
+  }
+}
+
+//CONFIGURATION OBJECT
+const validationSettings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__submit-btn",
+  inactiveButtonClass: "button_inactive",
+  errorClass: "form__input-error_active",
+};
+
+enableValidation(validationSettings);
