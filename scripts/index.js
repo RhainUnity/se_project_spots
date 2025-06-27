@@ -57,7 +57,6 @@ profileSubmitForm.addEventListener("submit", function (evt) {
 
 //NEW POST OPEN/CLOSE
 addPostBtn.addEventListener("click", function () {
-  /////////////////resetValidation(addPostSubmitForm, validationSettings);
   openModal(addPostModal);
 });
 
@@ -73,16 +72,19 @@ addPostSubmitForm.addEventListener("submit", function (evt) {
 
   //clear input fields
   evt.target.reset();
-  toggleButtonState(true, addPostBtn, config); //////@@@@@@@@@@/////////
-  ////////////////////cardCaptionInput.value = "";
-  ////////////////////cardImageInput.value = "";
+  const inputList = Array.from(
+    addPostSubmitForm.querySelectorAll(validationSettings.inputSelector)
+  );
+  const btnElement = addPostSubmitForm.querySelector(
+    validationSettings.submitButtonSelector
+  );
+  toggleButtonState(inputList, btnElement, validationSettings);
 
   closeModal(addPostModal);
 });
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
-  ////////////////////////////////enableValidation(validationSettings);
   document.addEventListener("keydown", escapeCloseModal);
 }
 
@@ -132,24 +134,18 @@ initialCards.forEach(function (card) {
 //CLOSE MODAL ON ESCAPE OR CLICK BG
 function escapeCloseModal(evt) {
   if (evt.key === "Escape") {
-    closeOpenedModal();
+    const openedModal = document.querySelector(".modal_is-opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
   }
 }
 
-/////document.addEventListener("mousedown", (evt) => {               ///////////////////
 const modals = document.querySelectorAll(".modal");
 modals.forEach((modal) => {
-  modal.addEventListener("click", (evt) => {
-    /////////////////////////////////////////////
+  modal.addEventListener("mousedown", (evt) => {
     if (evt.target === modal) {
-      closeOpenedModal();
+      closeModal(modal);
     }
   });
 });
-
-function closeOpenedModal() {
-  const openedModal = document.querySelector(".modal_is-opened");
-  if (openedModal) {
-    closeModal(openedModal);
-  }
-}

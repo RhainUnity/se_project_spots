@@ -1,15 +1,11 @@
 const showInputError = (formElement, inputElement, errorMessage, config) => {
-  ////////////////////////////////////////////////////////console.log(inputElement);
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  /////////////////////////////////////////////////////////////console.log(errorElement);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(config.errorClass);
 };
 
 const hideInputError = (formElement, inputElement, config) => {
-  ////////////////////////////////////////////////////////////////console.log(inputElement);
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-
   errorElement.classList.remove(config.errorClass);
   errorElement.textContent = "";
 };
