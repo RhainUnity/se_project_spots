@@ -1,15 +1,15 @@
 const showInputError = (formElement, inputElement, errorMessage, config) => {
-  console.log(inputElement);
+  ////////////////////////////////////////////////////////console.log(inputElement);
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  console.log(errorElement);
+  /////////////////////////////////////////////////////////////console.log(errorElement);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(config.errorClass);
 };
 
 const hideInputError = (formElement, inputElement, config) => {
-  console.log(inputElement);
+  ////////////////////////////////////////////////////////////////console.log(inputElement);
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  console.log(errorElement);
+  ////////////////////////////////////////////////////////////////console.log(errorElement);
   errorElement.classList.remove(config.errorClass);
   errorElement.textContent = "";
 };
@@ -74,3 +74,14 @@ const resetValidation = (formElement, config) => {
   });
   toggleButtonState(inputList, btnElement, config);
 };
+
+//CONFIGURATION OBJECT
+const validationSettings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__submit-btn",
+  inactiveButtonClass: "button_inactive",
+  errorClass: "form__input-error_active",
+};
+
+enableValidation(validationSettings);

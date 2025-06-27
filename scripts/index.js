@@ -57,7 +57,7 @@ profileSubmitForm.addEventListener("submit", function (evt) {
 
 //NEW POST OPEN/CLOSE
 addPostBtn.addEventListener("click", function () {
-  resetValidation(addPostSubmitForm, validationSettings);
+  /////////////////resetValidation(addPostSubmitForm, validationSettings);
   openModal(addPostModal);
 });
 
@@ -72,15 +72,17 @@ addPostSubmitForm.addEventListener("submit", function (evt) {
   cardList.prepend(newCard);
 
   //clear input fields
-  cardCaptionInput.value = "";
-  cardImageInput.value = "";
+  evt.target.reset();
+  toggleButtonState(true, addPostBtn, config); //////@@@@@@@@@@/////////
+  ////////////////////cardCaptionInput.value = "";
+  ////////////////////cardImageInput.value = "";
 
   closeModal(addPostModal);
 });
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
-  enableValidation(validationSettings);
+  ////////////////////////////////enableValidation(validationSettings);
   document.addEventListener("keydown", escapeCloseModal);
 }
 
@@ -99,6 +101,7 @@ function getCardElement(data) {
   //add data
   cardTitleEl.textContent = data.name;
   cardImageEl.src = data.link;
+  cardImageEl.alt = data.name;
   //like button functionality
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
   cardLikeBtn.addEventListener("click", function () {
@@ -133,9 +136,11 @@ function escapeCloseModal(evt) {
   }
 }
 
-document.addEventListener("mousedown", (evt) => {
-  const modals = document.querySelectorAll(".modal");
-  modals.forEach((modal) => {
+/////document.addEventListener("mousedown", (evt) => {               ///////////////////
+const modals = document.querySelectorAll(".modal");
+modals.forEach((modal) => {
+  modal.addEventListener("click", (evt) => {
+    /////////////////////////////////////////////
     if (evt.target === modal) {
       closeOpenedModal();
     }
@@ -148,14 +153,3 @@ function closeOpenedModal() {
     closeModal(openedModal);
   }
 }
-
-//CONFIGURATION OBJECT
-const validationSettings = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__submit-btn",
-  inactiveButtonClass: "button_inactive",
-  errorClass: "form__input-error_active",
-};
-
-enableValidation(validationSettings);
