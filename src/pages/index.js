@@ -1,3 +1,12 @@
+import "./index.css";
+import { initialCards } from "../scripts/cards.js";
+import {
+  enableValidation,
+  validationSettings,
+  toggleButtonState,
+  resetValidation,
+} from "../scripts/validation.js";
+
 //CARD TEMPLATE
 const cardList = document.querySelector(".cards__list");
 const cardTemplate = document.querySelector("#card-template");
@@ -149,3 +158,5 @@ modals.forEach((modal) => {
     }
   });
 });
+
+enableValidation(validationSettings);

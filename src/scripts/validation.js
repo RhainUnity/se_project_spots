@@ -29,7 +29,7 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, btnElement, config) => {
+export const toggleButtonState = (inputList, btnElement, config) => {
   if (hasInvalidInput(inputList)) {
     btnElement.classList.add(config.inactiveButtonClass);
     btnElement.disabled = true;
@@ -53,14 +53,14 @@ const setEventListeners = (formElement, config) => {
   });
 };
 
-const enableValidation = (config) => {
+export const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
     setEventListeners(formElement, config);
   });
 };
 
-const resetValidation = (formElement, config) => {
+export const resetValidation = (formElement, config) => {
   const inputList = Array.from(
     formElement.querySelectorAll(config.inputSelector)
   );
@@ -72,12 +72,10 @@ const resetValidation = (formElement, config) => {
 };
 
 //CONFIGURATION OBJECT
-const validationSettings = {
+export const validationSettings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-btn",
   inactiveButtonClass: "modal__submit-btn_inactive",
   errorClass: "form__input-error_active",
 };
-
-enableValidation(validationSettings);
