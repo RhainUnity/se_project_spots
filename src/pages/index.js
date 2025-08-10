@@ -6,6 +6,15 @@ import {
   toggleButtonState,
   resetValidation,
 } from "../scripts/validation.js";
+import Api from "../utils/Api.js";
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "5af14bf4-35ec-4ac2-a1b5-74276a3c6001",
+    "Content-Type": "application/json",
+  },
+});
 
 //CARD TEMPLATE
 const cardList = document.querySelector(".cards__list");
@@ -40,6 +49,20 @@ const previewContent = previewModal.querySelector(".modal__preview-content");
 const previewImage = previewModal.querySelector(".modal__preview-image");
 const previewCaption = previewModal.querySelector(".modal__caption");
 const previewCloseBtn = previewModal.querySelector(".modal__close-btn");
+
+api.getAppInfo().then(([cards, user]) => {
+  cards.forEach((item) => {
+    const cardEl = getCardElement(item);
+    cardList.append(cardEl);
+  });
+  profileName.textContent = user.name;
+  profileDescription.textContent = user.about;
+  const avatarImage = document.querySelector(".profile__avatar");
+  avatarImage.src = user.avatar;
+  avatarImage.alt = `${user.name}'s avatar`;
+});
+
+//console.log(api.logGetInfo());
 
 previewCloseBtn.addEventListener("click", function () {
   closeModal(previewModal);
@@ -135,10 +158,10 @@ function getCardElement(data) {
 }
 
 //LOOP CARD INFO
-initialCards.forEach(function (card) {
-  const initialCard = getCardElement(card);
-  cardList.prepend(initialCard);
-});
+// initialCards.forEach(function (card) {
+//   const initialCard = getCardElement(card);
+//   cardList.prepend(initialCard);
+// });
 
 //CLOSE MODAL ON ESCAPE OR CLICK BG
 function escapeCloseModal(evt) {
