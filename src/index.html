@@ -21,11 +21,20 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%= require('./images/avatar.png') %>"
-            alt="Bessie avatar image"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-container">
+            <button class="profile__avatar-btn">
+              <img
+                src="<%= require('./images/pencil.svg') %>"
+                alt="Pencil icon"
+                class="profile__avatar-btn-image"
+              />
+            </button>
+            <img
+              src="<%= require('./images/avatar.png') %>"
+              alt="Bessie avatar image"
+              class="profile__avatar"
+            />
+          </div>
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
@@ -171,7 +180,17 @@
           <p class="modal__caption"></p>
         </div>
       </div>
+      <!-- DELETE CARD MODAL-->
+      <div class="modal" id="delete-modal">
+        <div class="modal__delete-content">
+          <div class="modal__bg-overlay"></div>
+          <h2 class="modal__delete_title">
+            Are you sure you want to delete this image?
+          </h2>
+          <button type="button" class="modal__delete-btn">Delete</button>
+          <button type="button" class="modal__cancel-delete-btn">Delete</button>
+        </div>
+      </div>
     </div>
-    <!-- ///////////////////////<script src="./scripts/cards.js"></script> -->
   </body>
 </html>

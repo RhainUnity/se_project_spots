@@ -50,17 +50,25 @@ const previewImage = previewModal.querySelector(".modal__preview-image");
 const previewCaption = previewModal.querySelector(".modal__caption");
 const previewCloseBtn = previewModal.querySelector(".modal__close-btn");
 
-api.getAppInfo().then(([cards, user]) => {
-  cards.forEach((item) => {
-    const cardEl = getCardElement(item);
-    cardList.append(cardEl);
+//DELETE POST MODAL
+const deletePostModal = document.querySelector("#delete-modal");
+
+api
+  .getAppInfo()
+  .then(([cards, user]) => {
+    cards.forEach((item) => {
+      const cardEl = getCardElement(item);
+      cardList.append(cardEl);
+    });
+    profileName.textContent = user.name;
+    profileDescription.textContent = user.about;
+    const avatarImage = document.querySelector(".profile__avatar");
+    avatarImage.src = user.avatar;
+    avatarImage.alt = `${user.name}'s avatar`;
+  })
+  .catch((err) => {
+    console.error(err);
   });
-  profileName.textContent = user.name;
-  profileDescription.textContent = user.about;
-  const avatarImage = document.querySelector(".profile__avatar");
-  avatarImage.src = user.avatar;
-  avatarImage.alt = `${user.name}'s avatar`;
-});
 
 //console.log(api.logGetInfo());
 
@@ -82,8 +90,19 @@ editProfileCloseBtn.addEventListener("click", function () {
 
 profileSubmitForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileDescription.textContent = jobInput.value;
+  //
+  api
+    .editUserInfo({ name: nameInput.value, about: jobInput.value })
+    .then((data) => {
+      profileName.textContent = data.name;
+      profileDescription.textContent = data.about;
+      //////////////////////////////////////////cLog(data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  //
+
   closeModal(editProfileModal);
 });
 
@@ -99,8 +118,18 @@ addPostCloseBtn.addEventListener("click", function () {
 addPostSubmitForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const card = { name: cardCaptionInput.value, link: cardImageInput.value };
-  const newCard = getCardElement(card);
-  cardList.prepend(newCard);
+  //
+  api
+    .addNewCard(card)
+    .then((data) => {
+      const newCard = getCardElement(card);
+      cardList.prepend(newCard);
+      /////////////////////////cLog(data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  //
 
   //clear input fields
   evt.target.reset();
@@ -144,7 +173,7 @@ function getCardElement(data) {
   //delete button functionality
   const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
   cardDeleteBtn.addEventListener("click", function () {
-    cardDeleteBtn.closest(".card").remove();
+    deletePost();
   });
   //preview modal
   cardImageEl.addEventListener("click", () => {
@@ -153,6 +182,17 @@ function getCardElement(data) {
     previewCaption.textContent = data.name;
     openModal(previewModal);
   });
+
+  function deletePost() {
+    openModal(deletePostModal);
+    const deletePostBtn = deletePostModal.querySelector(".modal__delete-btn");
+    deletePostBtn.addEventListener("click", () => {
+      api.removeCard(cardId).then(() => {
+        ///////
+        cardDeleteBtn.closest(".card").remove();
+      });
+    });
+  }
 
   return cardElement;
 }
@@ -171,6 +211,10 @@ function escapeCloseModal(evt) {
       closeModal(openedModal);
     }
   }
+}
+
+function cLog(info) {
+  console.log(info);
 }
 
 const modals = document.querySelectorAll(".modal");
