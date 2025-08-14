@@ -77,16 +77,6 @@ class Api {
     // if the server returns an error, reject the promise
     return Promise.reject(`Error: ${res.status}`);
   }
-
-  //   logGetInfo() {
-  //     return fetch(`${this._baseUrl}/users`, {
-  //       headers: this._headers,
-  //     }).then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //     });
-  //   }
 }
 
 // export the class

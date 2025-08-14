@@ -22,8 +22,6 @@ let selectedCardId;
 const cardList = document.querySelector(".cards__list");
 const cardTemplate = document.querySelector("#card-template");
 
-/////////////////////////////////const deleteForm = deletePostModal.querySelector(".modal__form");
-
 //EDIT PROFILE
 const editProfileModal = document.querySelector("#edit-profile-modal");
 /* buttons */
@@ -75,7 +73,6 @@ deleteCancelBtn?.addEventListener("click", (evt) => {
 
 deleteConfirmBtn.addEventListener("click", (evt) => {
   evt.preventDefault();
-  //const deleteBtn = evt.submitter;
   deleteConfirmBtn.textContent = "Deleting...";
   if (!selectedCardId) return;
   api
@@ -109,8 +106,6 @@ api
   .catch((err) => {
     console.error(err);
   });
-
-//console.log(api.logGetInfo());
 
 previewCloseBtn.addEventListener("click", function () {
   closeModal(previewModal);
@@ -169,13 +164,11 @@ profileSubmitForm.addEventListener("submit", function (evt) {
     .then((data) => {
       profileName.textContent = data.name;
       profileDescription.textContent = data.about;
-      //////////////////////////////////////////cLog(data);
     })
     .catch((err) => {
       console.error(err);
     })
     .finally(revertSubmitText(evt));
-  //
 
   closeModal(editProfileModal);
 });
@@ -193,20 +186,17 @@ addPostSubmitForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   updateSavingText(evt);
   const card = { name: cardCaptionInput.value, link: cardImageInput.value };
-  //
+  //ADD NEW CARD
   api
     .addNewCard(card)
     .then((data) => {
       const newCard = getCardElement(data);
       cardList.prepend(newCard);
-      /////////////////////////cLog(data);
     })
     .catch((err) => {
       console.error(err);
     })
     .finally(revertSubmitText(evt));
-  //
-
   //clear input fields
   evt.target.reset();
   const inputList = Array.from(
@@ -256,10 +246,6 @@ function getCardElement(data) {
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
   cardLikeBtn.addEventListener("click", function () {
     cardLikeBtn.classList.toggle("card__like-btn_active");
-    console.log(
-      data._id,
-      cardLikeBtn.classList.contains("card__like-btn_active")
-    );
     api
       .addOrRemoveLike(
         data._id,
@@ -288,13 +274,10 @@ function handleDeletePost(cardElement, data) {
   openModal(deletePostModal);
 }
 
-// function handleDeleteSubmit(evt) {
-//   evt.preventDefault();
-
 api
-  .removeCard(selectedCardId) // <- pass the id to the API
+  .removeCard(selectedCardId)
   .then(() => {
-    selectedCard.remove(); // remove from DOM
+    selectedCard.remove();
     closeModal(deletePostModal);
   })
   .catch(console.error)
@@ -302,8 +285,6 @@ api
     selectedCard = null;
     selectedCardId = null;
   });
-
-////////////////////////////////deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 //CLOSE MODAL ON ESCAPE OR CLICK BG
 function escapeCloseModal(evt) {
@@ -313,10 +294,6 @@ function escapeCloseModal(evt) {
       closeModal(openedModal);
     }
   }
-}
-
-function cLog(info) {
-  console.log(info);
 }
 
 const modals = document.querySelectorAll(".modal");
