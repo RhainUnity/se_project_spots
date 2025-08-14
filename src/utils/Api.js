@@ -33,6 +33,17 @@ class Api {
     }).then((res) => this._checkRequestResult(res));
   }
 
+  editAvatarImage({ avatar }) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      // Send the data in the body as a JSON string.
+      body: JSON.stringify({
+        avatar,
+      }),
+    }).then((res) => this._checkRequestResult(res));
+  }
+
   addNewCard({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
@@ -48,6 +59,13 @@ class Api {
   removeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
+      headers: this._headers,
+    }).then((res) => this._checkRequestResult(res));
+  }
+
+  addOrRemoveLike(cardId, isLiked) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
     }).then((res) => this._checkRequestResult(res));
   }
