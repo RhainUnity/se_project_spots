@@ -6,8 +6,8 @@
 
 .profile__avatar {
   border-radius: 8px;
-  max-width: 190px;
-  max-height: 190px;
+  width: 190px;
+  height: 190px;
   object-fit: cover;
 }
 

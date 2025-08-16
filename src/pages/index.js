@@ -138,7 +138,7 @@ submitAvatarBtn.addEventListener("submit", function (evt) {
     .catch((err) => {
       console.error(err);
     })
-    .finally(revertSubmitText(evt));
+    .finally(() => revertSubmitText(evt));
   //
 
   closeModal(editAvatarModal);
@@ -168,7 +168,7 @@ profileSubmitForm.addEventListener("submit", function (evt) {
     .catch((err) => {
       console.error(err);
     })
-    .finally(revertSubmitText(evt));
+    .finally(() => revertSubmitText(evt));
 
   closeModal(editProfileModal);
 });
@@ -196,7 +196,7 @@ addPostSubmitForm.addEventListener("submit", function (evt) {
     .catch((err) => {
       console.error(err);
     })
-    .finally(revertSubmitText(evt));
+    .finally(() => revertSubmitText(evt));
   //clear input fields
   evt.target.reset();
   const inputList = Array.from(
